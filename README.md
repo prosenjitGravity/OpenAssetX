@@ -33,7 +33,7 @@ The platform will utilize two types of tokens, both adhering to the **ERC1155 Mu
 
 ## Technology Stack
 
-*   **UI (Frontend):** React (built with Next.js App Router)
+*   **UI (Frontend):** React (built with React.js App Router)
     *   **Styling:** External CSS with CSS Modules for a professional and modular design.
 <!-- *   **Backend:** Node.js -->
 *   **Blockchain Platform:** Ethereum / Polygon
@@ -46,7 +46,7 @@ The platform will utilize two types of tokens, both adhering to the **ERC1155 Mu
 
 ## Current UI Status (Frontend)
 
-The user interface has been developed using React with Next.js App Router, focusing on a professional and standard design. It utilizes external CSS files and CSS Modules for component-scoped styling, ensuring a clean and maintainable codebase.
+The user interface has been developed using React with React.js App Router, focusing on a professional and standard design. It utilizes external CSS files and CSS Modules for component-scoped styling, ensuring a clean and maintainable codebase.
 
 **Implemented UI Pages/Components:**
 
@@ -94,7 +94,7 @@ To run the current UI:
 1.  **Clone the repository:**
     \`\`\`bash
     git clone <your-repo-url>
-    cd blockchain-app
+    cd 
     \`\`\`
 2.  **Install dependencies:**
     \`\`\`bash
@@ -108,7 +108,7 @@ To run the current UI:
     \`\`\`
 4.  Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
 
-## Future Work & Next Steps
+## Future Work & React Steps
 
 The current UI provides a strong foundation. To complete the PoC, the following steps are crucial:
 
@@ -130,4 +130,4 @@ The current UI provides a strong foundation. To complete the PoC, the following 
     *   Add robust error handling and loading indicators for all blockchain interactions.
 6.  **Deployment:**
     *   Deploy smart contracts to a testnet (e.g., Sepolia, Mumbai) and then to a mainnet.
-    *   Deploy the Next.js application and Node.js backend to a hosting platform (e.g., Vercel for Next.js).
+    *   Deploy the React.js application and Node.js backend to a hosting platform (e.g., Vercel for React.js).
