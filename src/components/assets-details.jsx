@@ -61,7 +61,7 @@ export default function AssetDetailPage({ assetId }) {
           <div className="nav-flex">
             <div className="nav-left">
               <a href="/" className="logo">
-                AssetMarket
+                OpenAssetX
               </a>
             </div>
             <div className="nav-right">
