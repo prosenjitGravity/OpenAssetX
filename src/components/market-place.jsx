@@ -1,6 +1,7 @@
 import { useState } from "react"
 import "./market-place.css"
 import { Link } from "react-router-dom"
+import Navbar from './navbar';
 
 export default function MarketplacePage() {
   const [searchTerm, setSearchTerm] = useState("")
@@ -17,7 +18,7 @@ export default function MarketplacePage() {
       price: 800,
       category: "Electronics",
       seller: "0x1234...5678",
-      image: "/placeholder.svg?height=200&width=300",
+      image: "https://cdn.media.amplience.net/i/canon/eos_5d_mark_iv-beauty_1bd06bcadaee4833af6460c87898d249?$70-30-header-4by3-dt$",
       condition: "Excellent",
     },
     {
@@ -27,7 +28,7 @@ export default function MarketplacePage() {
       price: 120,
       category: "Books",
       seller: "0x9876...5432",
-      image: "/placeholder.svg?height=200&width=300",
+      image: "https://media.trekbikes.com/image/upload/w_1440,h_1080,c_pad,f_auto,fl_progressive:semi,q_auto/XCaliber8_23_35069_B_Portrait",
       condition: "Good",
     },
     {
@@ -37,7 +38,7 @@ export default function MarketplacePage() {
       price: 1200,
       category: "Electronics",
       seller: "0x5555...7777",
-      image: "/placeholder.svg?height=200&width=300",
+      image: "https://dlcdnwebimgs.asus.com/gain/9D1F9B8C-4A4C-4006-BEA1-E7E06F0D1B42/w717/h525",
       condition: "Very Good",
     },
     {
@@ -125,61 +126,42 @@ export default function MarketplacePage() {
   return (
     <div className="marketplace-container">
       {/* Navigation */}
-      <nav className="nav-bar">
-        <div className="nav-content">
-          <div className="nav-flex">
-            <div className="nav-left">
-              <a href="/" className="logo">
-                OpenAssetX
-              </a>
-            </div>
-            <div className="nav-right">
-              <a href="/marketplace">
-                <button className="nav-btn">Marketplace</button>
-              </a>
-              <a href="/dashboard">
-                <button className="nav-btn">Dashboard</button>
-              </a>
-              <button className="logout-btn">Logout</button>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <Navbar/>
 
-      <div className="main-content">
+      <div className="marketplace-main-content">
         {/* Header */}
-        <div className="header">
-          <h1 className="title">Marketplace</h1>
-          <p className="subtitle">Discover and buy unique used assets</p>
+        <div className="marketplace-header">
+          <h1 className="marketplace-title">Asset Marketplace</h1>
+          <p className="marketplace-subtitle">Discover and buy unique verified assets on the blockchain</p>
         </div>
 
         {/* Filters */}
-        <div className="filters-container">
-          <div className="filters-grid">
-            <div className="search-container">
-              <span className="search-icon">🔍</span>
+        <div className="marketplace-filters-container">
+          <div className="marketplace-filters-grid">
+            <div className="marketplace-search-container">
+              <span className="marketplace-search-icon">🔍</span>
               <input
                 placeholder="Search assets..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="search-input"
+                className="marketplace-search-input"
               />
             </div>
 
-            <div className="dropdown-container">
+            <div className="marketplace-dropdown-container">
               <button 
-                className="dropdown-trigger"
+                className="marketplace-dropdown-trigger"
                 onClick={() => setCategoryDropdownOpen(!categoryDropdownOpen)}
               >
                 <span>{getCategoryLabel()}</span>
-                <span className="dropdown-arrow">▼</span>
+                <span className="marketplace-dropdown-arrow">▼</span>
               </button>
               {categoryDropdownOpen && (
-                <div className="dropdown-content">
+                <div className="marketplace-dropdown-content">
                   {categories.map((category) => (
                     <button
                       key={category.value}
-                      className="dropdown-item"
+                      className="marketplace-dropdown-item"
                       onClick={() => handleCategorySelect(category.value)}
                     >
                       {category.label}
@@ -189,20 +171,20 @@ export default function MarketplacePage() {
               )}
             </div>
 
-            <div className="dropdown-container">
+            <div className="marketplace-dropdown-container">
               <button 
-                className="dropdown-trigger"
+                className="marketplace-dropdown-trigger"
                 onClick={() => setPriceDropdownOpen(!priceDropdownOpen)}
               >
                 <span>{getPriceLabel()}</span>
-                <span className="dropdown-arrow">▼</span>
+                <span className="marketplace-dropdown-arrow">▼</span>
               </button>
               {priceDropdownOpen && (
-                <div className="dropdown-content">
+                <div className="marketplace-dropdown-content">
                   {priceRanges.map((range) => (
                     <button
                       key={range.value}
-                      className="dropdown-item"
+                      className="marketplace-dropdown-item"
                       onClick={() => handlePriceSelect(range.value)}
                     >
                       {range.label}
@@ -212,55 +194,57 @@ export default function MarketplacePage() {
               )}
             </div>
 
-            <button className="filter-btn">
-              <span className="btn-icon">🔧</span>
+            <button className="marketplace-filter-btn">
+              <span className="marketplace-btn-icon">🔧</span>
               More Filters
             </button>
           </div>
         </div>
 
         {/* Results Count */}
-        <div className="results-count">
-          <p className="count-text">
-            Showing {filteredAssets.length} of {assets.length} assets
+        <div className="marketplace-results-count">
+          <p className="marketplace-count-text">
+            Showing <strong>{filteredAssets.length}</strong> of <strong>{assets.length}</strong> assets
           </p>
         </div>
 
         {/* Asset Grid */}
-        <div className="assets-grid">
+        <div className="marketplace-assets-grid">
           {filteredAssets.map((asset) => (
-            <div key={asset.id} className="asset-card">
-              <div className="asset-image-container">
+            <div key={asset.id} className="marketplace-asset-card">
+              <div className="marketplace-asset-image-container">
                 <img
                   src={asset.image || "/placeholder.svg"}
                   alt={asset.name}
-                  className="asset-image"
+                  className="marketplace-asset-image"
                 />
+                <div className="marketplace-condition-overlay">
+                  <span className="marketplace-condition-badge">{asset.condition}</span>
+                </div>
               </div>
-              <div className="asset-content">
-                <div className="asset-header">
-                  <h3 className="asset-title">{asset.name}</h3>
-                  <span className="condition-badge">{asset.condition}</span>
+              <div className="marketplace-asset-content">
+                <div className="marketplace-asset-header">
+                  <h3 className="marketplace-asset-title">{asset.name}</h3>
+                  <span className="marketplace-category-badge">{asset.category}</span>
                 </div>
-                <p className="asset-description">{asset.description}</p>
+                <p className="marketplace-asset-description">{asset.description}</p>
 
-                <div className="seller-info">
-                  <span className="seller-icon">👤</span>
-                  <span className="seller-text">Seller: {asset.seller}</span>
-                </div>
-
-                <div className="price-row">
-                  <span className="asset-price">{asset.price} tokens</span>
-                  <span className="category-badge">{asset.category}</span>
+                <div className="marketplace-seller-info">
+                  <span className="marketplace-seller-icon">👤</span>
+                  <span className="marketplace-seller-text">Seller: {asset.seller}</span>
                 </div>
 
-                <div className="asset-actions">
-                  <Link to={`/asset/${asset.id}`} className="view-btn">
-                    <span className="btn-icon">👁</span>
+                <div className="marketplace-price-row">
+                  <span className="marketplace-asset-price">{asset.price} tokens</span>
+                </div>
+
+                <div className="marketplace-asset-actions">
+                  <Link to={`/asset/${asset.id}`} className="marketplace-view-btn">
+                    <span className="marketplace-btn-icon">👁</span>
                     View Details
                   </Link>
-                  <button className="buy-btn">
-                    <span className="btn-icon">🛒</span>
+                  <button className="marketplace-buy-btn">
+                    <span className="marketplace-btn-icon">🛒</span>
                     Buy Now
                   </button>
                 </div>
@@ -270,9 +254,10 @@ export default function MarketplacePage() {
         </div>
 
         {filteredAssets.length === 0 && (
-          <div className="no-results">
-            <p className="no-results-title">No assets found matching your criteria.</p>
-            <p className="no-results-subtitle">Try adjusting your filters or search terms.</p>
+          <div className="marketplace-no-results">
+            <div className="marketplace-no-results-icon">📭</div>
+            <h3 className="marketplace-no-results-title">No assets found</h3>
+            <p className="marketplace-no-results-subtitle">Try adjusting your filters or search terms to find what you're looking for.</p>
           </div>
         )}
       </div>
