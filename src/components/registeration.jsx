@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './registration.css';
 import { Link } from 'react-router-dom';
+import { ethers } from "ethers";
 
 const RegisterPage = () => {
   const [currentStep, setCurrentStep] = useState(1);
@@ -38,10 +39,10 @@ const RegisterPage = () => {
   const [isConnectingWallet, setIsConnectingWallet] = useState(false);
 
   const steps = [
-    { id: 1, title: "Personal Info", icon: "👤" },
-    { id: 2, title: "Blockchain Setup", icon: "🔗" },
-    { id: 3, title: "Preferences", icon: "⚙️" },
-    { id: 4, title: "Verification", icon: "✅" }
+    { id: 1, title: "Personal Info", icon: "person" },
+    { id: 2, title: "Blockchain Setup", icon: "currency_bitcoin" },
+    { id: 3, title: "Preferences", icon: "settings" },
+    { id: 4, title: "Verification", icon: "verified_user" }
   ];
 
   const countries = [
@@ -52,7 +53,7 @@ const RegisterPage = () => {
   const networks = [
     { id: "ethereum", name: "Ethereum", icon: "⟠", description: "Main network for most assets" },
     { id: "polygon", name: "Polygon", icon: "⬟", description: "Lower fees, faster transactions" },
-    { id: "binance", name: "BSC", icon: "🟡", description: "Binance Smart Chain" }
+    // { id: "binance", name: "BSC", icon: "🟡", description: "Binance Smart Chain" }
   ];
 
   const categories = [
@@ -160,20 +161,40 @@ const RegisterPage = () => {
     }
   };
 
-  const connectWallet = async () => {
-    setIsConnectingWallet(true);
-    // Simulate wallet connection
-    setTimeout(() => {
-      setFormData({
-        ...formData,
-        walletAddress: "0x1234567890abcdef1234567890abcdef12345678"
-      });
-      setIsConnectingWallet(false);
-    }, 2000);
-  };
+  // const connectWallet = async () => {
+  //   setIsConnectingWallet(true);
+  //   // Simulate wallet connection
+  //   setTimeout(() => {
+  //     setFormData({
+  //       ...formData,
+  //       walletAddress: "0x1234567890abcdef1234567890abcdef12345678"
+  //     });
+  //     setIsConnectingWallet(false);
+  //   }, 2000);
+  // };
 
   const getStepProgress = () => {
     return (currentStep / steps.length) * 100;
+  };
+
+
+  const connectWallet = async () => {
+    try {
+      setIsConnectingWallet(true);
+      if (!window.ethereum) {
+        alert("MetaMask not found. Please install the MetaMask extension.");
+        setIsConnectingWallet(false);
+        return;
+      }
+      const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+      if (accounts && accounts[0]) {
+        handleInputChange('walletAddress', accounts[0]);
+      }
+      setIsConnectingWallet(false);
+    } catch (error) {
+      alert("Failed to connect wallet: " + (error?.message || error));
+      setIsConnectingWallet(false);
+    }
   };
 
   return (
@@ -214,7 +235,7 @@ const RegisterPage = () => {
                   key={step.id}
                   className={`registration-step-item ${currentStep >= step.id ? 'active' : ''} ${currentStep === step.id ? 'current' : ''}`}
                 >
-                  <div className="registration-step-circle">
+                  <div className="material-icons registration-step-circle">
                     {currentStep > step.id ? '✓' : step.icon}
                   </div>
                   <span className="registration-step-title">{step.title}</span>
@@ -231,7 +252,7 @@ const RegisterPage = () => {
               {currentStep === 1 && (
                 <div className="registration-step-content">
                   <h2 className="registration-step-heading">
-                    <span className="registration-step-icon">👤</span>
+                    <span className="material-icons registration-step-icon">person</span>
                     Personal Information
                   </h2>
                   
@@ -296,10 +317,10 @@ const RegisterPage = () => {
                         />
                         <button
                           type="button"
-                          className="registration-password-toggle"
+                          className="material-icons registration-password-toggle"
                           onClick={() => setShowPassword(!showPassword)}
                         >
-                          {showPassword ? '🙈' : '👁️'}
+                          {showPassword ? 'visibility_off' : 'visibility'}
                         </button>
                       </div>
                       {formData.password && (
@@ -371,80 +392,91 @@ const RegisterPage = () => {
               {/* Step 2: Blockchain Setup */}
               {currentStep === 2 && (
                 <div className="registration-step-content">
-                  <h2 className="registration-step-heading">
-                    <span className="registration-step-icon">🔗</span>
-                    Blockchain Setup
-                  </h2>
+      <h2 className="registration-step-heading">
+        <span className="registration-step-icon">🔗</span>
+        Blockchain Setup
+      </h2>
 
-                  <div className="registration-blockchain-section">
-                    <div className="registration-network-selection">
-                      <label className="registration-form-label">
-                        Preferred Network
-                      </label>
-                      <div className="registration-network-grid">
-                        {networks.map((network) => (
-                          <button
-                            key={network.id}
-                            type="button"
-                            className={`registration-network-btn ${formData.preferredNetwork === network.id ? 'active' : ''}`}
-                            onClick={() => handleInputChange('preferredNetwork', network.id)}
-                          >
-                            <span className="registration-network-icon">{network.icon}</span>
-                            <div className="registration-network-info">
-                              <span className="registration-network-name">{network.name}</span>
-                              <span className="registration-network-desc">{network.description}</span>
-                            </div>
-                          </button>
-                        ))}
-                      </div>
-                    </div>
+      <div className="registration-blockchain-section">
 
-                    <div className="registration-wallet-section">
-                      <label className="registration-form-label">
-                        Wallet Address <span className="registration-required">*</span>
-                      </label>
-                      <div className="registration-wallet-input-container">
-                        <input
-                          type="text"
-                          className={`registration-form-input ${errors.walletAddress ? 'registration-form-input-error' : ''}`}
-                          placeholder="0x... (Your wallet address)"
-                          value={formData.walletAddress}
-                          onChange={(e) => handleInputChange('walletAddress', e.target.value)}
-                        />
-                        <button
-                          type="button"
-                          className="registration-connect-wallet-btn"
-                          onClick={connectWallet}
-                          disabled={isConnectingWallet}
-                        >
-                          {isConnectingWallet ? (
-                            <>
-                              <span className="registration-spinner">⏳</span>
-                              Connecting...
-                            </>
-                          ) : (
-                            <>
-                              <span className="registration-wallet-icon">💼</span>
-                              Connect Wallet
-                            </>
-                          )}
-                        </button>
-                      </div>
-                      {errors.walletAddress && <span className="registration-error-message">{errors.walletAddress}</span>}
-                      
-                      <div className="registration-wallet-info">
-                        <div className="registration-info-item">
-                          <span className="registration-info-icon">🔒</span>
-                          <span>Your wallet is used for secure token transactions</span>
-                        </div>
-                        <div className="registration-info-item">
-                          <span className="registration-info-icon">💰</span>
-                          <span>1000 free tokens will be sent to this address</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+        {/* Preferred Network Selection */}
+        <div className="registration-network-selection">
+          <label className="registration-form-label">
+            Preferred Network <span className="registration-required">*</span>
+          </label>
+          <div className="registration-network-grid">
+            {networks.map((network) => (
+              <button
+                key={network.id}
+                type="button"
+                className={`registration-network-btn ${formData.preferredNetwork === network.id ? 'active' : ''}`}
+                onClick={() => handleInputChange('preferredNetwork', network.id)}
+              >
+                <span className="registration-network-icon">{network.icon}</span>
+                <div className="registration-network-info">
+                  <span className="registration-network-name">{network.name}</span>
+                  <span className="registration-network-desc">{network.description}</span>
                 </div>
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Wallet Address and Connect Button */}
+        <div className="registration-wallet-section">
+          <label className="registration-form-label">
+            Wallet Address <span className="registration-required">*</span>
+          </label>
+          <div className="registration-wallet-input-container">
+            <input
+              type="text"
+              className={`registration-form-input ${errors.walletAddress ? 'registration-form-input-error' : ''}`}
+              placeholder="0x... (Your wallet address)"
+              value={formData.walletAddress}
+              onChange={(e) => handleInputChange('walletAddress', e.target.value)}
+              readOnly={!!formData.walletAddress}
+            />
+            <button
+              type="button"
+              className="registration-connect-wallet-btn"
+              onClick={connectWallet}
+              disabled={isConnectingWallet}
+            >
+              {isConnectingWallet ? (
+                <>
+                  <span className="registration-spinner">⏳</span>
+                  Connecting...
+                </>
+              ) : (
+                <>
+                  <span className="registration-wallet-icon">💼</span>
+                  Connect Wallet
+                </>
+              )}
+            </button>
+          </div>
+          {formData.walletAddress && (
+            <div className="registration-wallet-success">
+              <span className="registration-success-icon">✅</span>
+              Connected: {formData.walletAddress}
+            </div>
+          )}
+          {errors.walletAddress && <span className="registration-error-message">{errors.walletAddress}</span>}
+
+          <div className="registration-wallet-info">
+            <div className="registration-info-item">
+              <span className="registration-info-icon">🔒</span>
+              <span>Your wallet is used for secure token transactions</span>
+            </div>
+            <div className="registration-info-item">
+              <span className="registration-info-icon">💰</span>
+              <span>1000 free tokens will be sent to this address</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
               )}
 
               {/* Step 3: Trading Preferences */}
@@ -650,16 +682,16 @@ const RegisterPage = () => {
 
               <div className="registration-security-badges">
                 <div className="registration-security-badge">
-                  <span className="registration-security-icon">🔒</span>
+                  <span className="material-icons registration-security-icon">enhanced_encryption</span>
                   <span className="registration-security-text">256-bit SSL encryption</span>
                 </div>
                 <div className="registration-security-badge">
-                  <span className="registration-security-icon">🛡️</span>
+                  <span className="material-icons registration-security-icon">security</span>
                   <span className="registration-security-text">GDPR compliant</span>
                 </div>
                 <div className="registration-security-badge">
-                  <span className="registration-security-icon">⚡</span>
-                  <span className="registration-security-text">Instant verification</span>
+                  <span className="material-icons registration-security-icon">⚡</span>
+                  <span className="registration-security-text">bolt</span>
                 </div>
               </div>
             </div>
