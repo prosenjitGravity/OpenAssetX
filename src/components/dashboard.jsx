@@ -379,9 +379,9 @@ export default function DashboardPage() {
               <div className="dashboard-activity-list">
                 {recentActivity.map((activity) => (
                   <div key={activity.id} className="dashboard-activity-item">
-                    <div className={`dashboard-activity-icon dashboard-activity-${activity.type}`}>
+                    <div className={` material-icons dashboard-activity-icon dashboard-activity-${activity.type}`}>
                       {activity.type === 'sale' && '💰'}
-                      {activity.type === 'purchase' && '🛒'}
+                      {activity.type === 'purchase' && 'shopping_cart'}
                       {activity.type === 'listing' && '📋'}
                     </div>
                     <div className="dashboard-activity-content">

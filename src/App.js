@@ -1,5 +1,6 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import 'material-icons/iconfont/material-icons.css';
 import HomePage from './components/home/home-page';
 import LoginPage from './components/login'
 import Registration from './components/registeration';
