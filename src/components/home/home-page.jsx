@@ -300,15 +300,15 @@ export default function HomePage() {
             </p>
             <div className="homepage-cta-features">
               <div className="homepage-cta-feature">
-                <span className="homepage-cta-feature-icon">🎁</span>
+                <span className="material-icons homepage-cta-feature-icon">redeem</span>
                 <span>1000 Free Tokens</span>
               </div>
               <div className="homepage-cta-feature">
-                <span className="homepage-cta-feature-icon">⚡</span>
+                <span className="material-icons homepage-cta-feature-icon">bolt</span>
                 <span>Instant Setup</span>
               </div>
               <div className="homepage-cta-feature">
-                <span className="homepage-cta-feature-icon">🔒</span>
+                <span className="material-icons homepage-cta-feature-icon">security</span>
                 <span>Bank-Level Security</span>
               </div>
             </div>
@@ -333,9 +333,9 @@ export default function HomePage() {
                 The world's first decentralized marketplace for used assets, built on blockchain for maximum transparency and security.
               </p>
               <div className="homepage-footer-social">
-                <a href="#" className="homepage-social-link">📧</a>
-                <a href="#" className="homepage-social-link">🐦</a>
-                <a href="#" className="homepage-social-link">💬</a>
+                <Link href="#" className="homepage-social-link">📧</Link>
+                <Link href="#" className="homepage-social-link">🐦</Link>
+                <Link href="#" className="homepage-social-link">💬</Link>
               </div>
             </div>
 
@@ -353,20 +353,20 @@ export default function HomePage() {
               <div className="homepage-footer-column">
                 <h4 className="homepage-footer-title">Support</h4>
                 <ul className="homepage-footer-list">
-                  <li><a href="#" className="homepage-footer-link">Help Center</a></li>
-                  <li><a href="#" className="homepage-footer-link">Contact Us</a></li>
-                  <li><a href="#" className="homepage-footer-link">Community</a></li>
-                  <li><a href="#" className="homepage-footer-link">Bug Report</a></li>
+                  <li><Link href="#" className="homepage-footer-link">Help Center</Link></li>
+                  <li><Link href="#" className="homepage-footer-link">Contact Us</Link></li>
+                  <li><Link href="#" className="homepage-footer-link">Community</Link></li>
+                  <li><Link href="#" className="homepage-footer-link">Bug Report</Link></li>
                 </ul>
               </div>
 
               <div className="homepage-footer-column">
                 <h4 className="homepage-footer-title">Legal</h4>
                 <ul className="homepage-footer-list">
-                  <li><a href="#" className="homepage-footer-link">Privacy Policy</a></li>
-                  <li><a href="#" className="homepage-footer-link">Terms of Service</a></li>
-                  <li><a href="#" className="homepage-footer-link">Security</a></li>
-                  <li><a href="#" className="homepage-footer-link">Compliance</a></li>
+                  <li><Link href="#" className="homepage-footer-link">Privacy Policy</Link></li>
+                  <li><Link href="#" className="homepage-footer-link">Terms of Service</Link></li>
+                  <li><Link href="#" className="homepage-footer-link">Security</Link></li>
+                  <li><Link href="#" className="homepage-footer-link">Compliance</Link></li>
                 </ul>
               </div>
             </div>
