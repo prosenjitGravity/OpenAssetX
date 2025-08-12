@@ -2,50 +2,52 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './home-page.css';
 import Navbar from '../navbar';
+import AssetDetailImage from '../../assets/images/blockchain.jpg';
+
 
 export default function HomePage() {
   const [activeTestimonial, setActiveTestimonial] = useState(0);
 
   const statistics = [
-    { value: "10K+", label: "Active Users", icon: "👥" },
-    { value: "25K+", label: "Assets Traded", icon: "📦" },
-    { value: "98%", label: "Success Rate", icon: "✅" },
-    { value: "$2M+", label: "Trade Volume", icon: "💰" }
+    { value: "10K+", label: "Active Users", icon: "people" },
+    { value: "25K+", label: "Assets Traded", icon: "redeem" },
+    { value: "98%", label: "Success Rate", icon: "verified" },
+    { value: "$2M+", label: "Trade Volume", icon: "currency_bitcoin" }
   ];
 
   const features = [
     {
-      icon: "🛡️",
+      icon: "security",
       title: "Secure Transactions",
       description: "All transactions are secured by blockchain technology and smart contracts with multi-signature validation",
       benefits: ["End-to-end encryption", "Smart contract protection", "Fraud prevention"]
     },
     {
-      icon: "🪙",
+      icon: "token",
       title: "Native Token Economy",
       description: "Use our money tokens for all transactions with instant settlements and low fees",
       benefits: ["1000 free tokens on signup", "Low transaction fees", "Instant settlements"]
     },
     {
-      icon: "📜",
+      icon: "receipt_long",
       title: "Complete Ownership History",
       description: "Transparent asset history stored immutably on the blockchain for full verification",
       benefits: ["Immutable records", "Full transparency", "Authenticity verification"]
     },
     {
-      icon: "⚡",
+      icon: "bolt",
       title: "Lightning Fast",
       description: "Quick asset listing, instant token transfers, and rapid marketplace discovery",
       benefits: ["Instant token transfers", "Fast asset discovery", "Quick listing process"]
     },
     {
-      icon: "🌐",
+      icon: "public",
       title: "Global Marketplace",
       description: "Trade with users worldwide in a decentralized, borderless marketplace",
       benefits: ["Worldwide access", "No geographical limits", "24/7 availability"]
     },
     {
-      icon: "🔍",
+      icon: "search",
       title: "Asset Verification",
       description: "Advanced verification system ensures authenticity and quality of all listed assets",
       benefits: ["Quality assurance", "Authenticity checks", "Dispute resolution"]
@@ -81,25 +83,25 @@ export default function HomePage() {
       step: "1",
       title: "Create Account",
       description: "Sign up and get 1000 free tokens to start trading immediately",
-      icon: "👤"
+      icon: "people"
     },
     {
       step: "2", 
       title: "List Your Assets",
       description: "Upload photos and details of items you want to sell",
-      icon: "📸"
+      icon: "sports_esports"
     },
     {
       step: "3",
       title: "Connect & Trade",
       description: "Buyers discover your assets and complete secure transactions",
-      icon: "🤝"
+      icon: "handshake"
     },
     {
       step: "4",
       title: "Get Paid",
       description: "Receive tokens instantly in your secure wallet",
-      icon: "💰"
+      icon: "currency_bitcoin"
     }
   ];
 
@@ -115,7 +117,7 @@ export default function HomePage() {
         <div className="homepage-hero-content">
           <div className="homepage-hero-text">
             <div className="homepage-hero-badge">
-              <span className="homepage-badge-icon">🚀</span>
+              <span className="material-icons homepage-badge-icon">rocket_launch</span>
               Now Live on Blockchain
             </div>
             <h1 className="homepage-hero-title">
@@ -128,41 +130,44 @@ export default function HomePage() {
             </p>
             <div className="homepage-hero-actions">
               <Link to="/register" className="homepage-btn-primary">
-                <span className="homepage-btn-icon">🎯</span>
+                <span className="material-icons homepage-btn-icon">arrow_forward</span>
                 Start Trading Free
               </Link>
               <Link to="/marketplace" className="homepage-btn-secondary">
-                <span className="homepage-btn-icon">🔍</span>
+                <span className="material-icons homepage-btn-icon">search</span>
                 Browse Marketplace
               </Link>
             </div>
             <div className="homepage-hero-features">
               <div className="homepage-feature-item">
-                <span className="homepage-feature-icon">🎁</span>
+                <span className="material-icons homepage-feature-icon">card_giftcard</span>
                 <span>1000 Free Tokens</span>
               </div>
               <div className="homepage-feature-item">
-                <span className="homepage-feature-icon">⚡</span>
+                <span className="material-icons homepage-feature-icon">bolt</span>
                 <span>Instant Trading</span>
               </div>
               <div className="homepage-feature-item">
-                <span className="homepage-feature-icon">🔒</span>
+                <span className="material-icons homepage-feature-icon">https</span>
                 <span>100% Secure</span>
               </div>
             </div>
           </div>
           <div className="homepage-hero-visual">
             <div className="homepage-hero-card">
+               <img className='homepage-hero-card' src={AssetDetailImage} alt="landing_page_image" />
+            </div>
+            {/* <div className="homepage-hero-card">
               <div className="homepage-card-header">
-                <div className="homepage-card-avatar">📱</div>
+                <div className="material-icons homepage-card-avatar">phone_iphone</div>
                 <div className="homepage-card-info">
-                  <h4>iPhone 13 Pro</h4>
+                  <h4>iPhone 16 Pro</h4>
                   <p>Excellent condition</p>
                 </div>
               </div>
               <div className="homepage-card-price">650 tokens</div>
-              <div className="homepage-card-status">✅ Verified</div>
-            </div>
+              <div className="homepage-card-status"><span className="material-icons">verified_user</span> Verified</div>
+            </div> */}
           </div>
         </div>
       </section>
@@ -172,7 +177,7 @@ export default function HomePage() {
         <div className="homepage-statistics-container">
           {statistics.map((stat, index) => (
             <div key={index} className="homepage-stat-item">
-              <div className="homepage-stat-icon">{stat.icon}</div>
+              <div className="material-icons homepage-stat-icon">{stat.icon}</div>
               <div className="homepage-stat-value">{stat.value}</div>
               <div className="homepage-stat-label">{stat.label}</div>
             </div>
@@ -193,7 +198,7 @@ export default function HomePage() {
           <div className="homepage-features-grid">
             {features.map((feature, index) => (
               <div key={index} className="homepage-feature-card">
-                <div className="homepage-feature-icon">{feature.icon}</div>
+                <div className="material-icons homepage-feature-icon">{feature.icon}</div>
                 <h3 className="homepage-feature-title">{feature.title}</h3>
                 <p className="homepage-feature-description">{feature.description}</p>
                 <ul className="homepage-feature-benefits">
@@ -225,7 +230,7 @@ export default function HomePage() {
               <div key={index} className="homepage-step-item">
                 <div className="homepage-step-icon">
                   <span className="homepage-step-number">{step.step}</span>
-                  <span className="homepage-step-emoji">{step.icon}</span>
+                  <span className="material-icons homepage-step-emoji">{step.icon}</span>
                 </div>
                 <div className="homepage-step-content">
                   <h4 className="homepage-step-title">{step.title}</h4>
@@ -255,7 +260,7 @@ export default function HomePage() {
               <div className="homepage-testimonial-content">
                 <div className="homepage-testimonial-rating">
                   {[...Array(testimonials[activeTestimonial].rating)].map((_, i) => (
-                    <span key={i} className="homepage-star">⭐</span>
+                    <span key={i} className="material-icons homepage-star">star</span>
                   ))}
                 </div>
                 <p className="homepage-testimonial-text">
@@ -300,20 +305,20 @@ export default function HomePage() {
             </p>
             <div className="homepage-cta-features">
               <div className="homepage-cta-feature">
-                <span className="homepage-cta-feature-icon">🎁</span>
+                <span className="material-icons homepage-cta-feature-icon">redeem</span>
                 <span>1000 Free Tokens</span>
               </div>
               <div className="homepage-cta-feature">
-                <span className="homepage-cta-feature-icon">⚡</span>
+                <span className="material-icons homepage-cta-feature-icon">bolt</span>
                 <span>Instant Setup</span>
               </div>
               <div className="homepage-cta-feature">
-                <span className="homepage-cta-feature-icon">🔒</span>
+                <span className="material-icons homepage-cta-feature-icon">security</span>
                 <span>Bank-Level Security</span>
               </div>
             </div>
             <Link to="/register" className="homepage-cta-button">
-              <span className="homepage-btn-icon">🚀</span>
+              <span className="material-icons homepage-btn-icon">rocket_launch</span>
               Create Free Account & Get 1000 Tokens
             </Link>
           </div>
@@ -333,9 +338,9 @@ export default function HomePage() {
                 The world's first decentralized marketplace for used assets, built on blockchain for maximum transparency and security.
               </p>
               <div className="homepage-footer-social">
-                <a href="#" className="homepage-social-link">📧</a>
-                <a href="#" className="homepage-social-link">🐦</a>
-                <a href="#" className="homepage-social-link">💬</a>
+                <Link  className="homepage-social-link"><span className="material-icons">alternate_email</span></Link>
+                <Link  className="homepage-social-link"><span className="material-icons">apple</span></Link>
+                <Link  className="homepage-social-link"><span className="material-icons">data_object</span></Link>
               </div>
             </div>
 
@@ -353,20 +358,20 @@ export default function HomePage() {
               <div className="homepage-footer-column">
                 <h4 className="homepage-footer-title">Support</h4>
                 <ul className="homepage-footer-list">
-                  <li><a href="#" className="homepage-footer-link">Help Center</a></li>
-                  <li><a href="#" className="homepage-footer-link">Contact Us</a></li>
-                  <li><a href="#" className="homepage-footer-link">Community</a></li>
-                  <li><a href="#" className="homepage-footer-link">Bug Report</a></li>
+                  <li><Link href="#" className="homepage-footer-link">Help Center</Link></li>
+                  <li><Link href="#" className="homepage-footer-link">Contact Us</Link></li>
+                  <li><Link href="#" className="homepage-footer-link">Community</Link></li>
+                  <li><Link href="#" className="homepage-footer-link">Bug Report</Link></li>
                 </ul>
               </div>
 
               <div className="homepage-footer-column">
                 <h4 className="homepage-footer-title">Legal</h4>
                 <ul className="homepage-footer-list">
-                  <li><a href="#" className="homepage-footer-link">Privacy Policy</a></li>
-                  <li><a href="#" className="homepage-footer-link">Terms of Service</a></li>
-                  <li><a href="#" className="homepage-footer-link">Security</a></li>
-                  <li><a href="#" className="homepage-footer-link">Compliance</a></li>
+                  <li><Link href="#" className="homepage-footer-link">Privacy Policy</Link></li>
+                  <li><Link href="#" className="homepage-footer-link">Terms of Service</Link></li>
+                  <li><Link href="#" className="homepage-footer-link">Security</Link></li>
+                  <li><Link href="#" className="homepage-footer-link">Compliance</Link></li>
                 </ul>
               </div>
             </div>
@@ -377,8 +382,8 @@ export default function HomePage() {
               © 2025 OpenAssetX. All rights reserved. Built with blockchain technology.
             </p>
             <div className="homepage-footer-badges">
-              <span className="homepage-footer-badge">🔒 SSL Secured</span>
-              <span className="homepage-footer-badge">⚡ Blockchain Verified</span>
+              <span className="homepage-footer-badge"><span className="material-icons">security</span> SSL Secured</span>
+              <span className="homepage-footer-badge"><span className="material-icons">bolt</span> Blockchain Verified</span>
             </div>
           </div>
         </div>

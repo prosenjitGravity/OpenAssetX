@@ -139,7 +139,7 @@ export default function MarketplacePage() {
         <div className="marketplace-filters-container">
           <div className="marketplace-filters-grid">
             <div className="marketplace-search-container">
-              <span className="marketplace-search-icon">🔍</span>
+              <span className="material-icons marketplace-search-icon">serarch</span>
               <input
                 placeholder="Search assets..."
                 value={searchTerm}
@@ -195,7 +195,7 @@ export default function MarketplacePage() {
             </div>
 
             <button className="marketplace-filter-btn">
-              <span className="marketplace-btn-icon">🔧</span>
+              <span className="material-icons marketplace-btn-icon">🔧</span>
               More Filters
             </button>
           </div>
@@ -230,7 +230,7 @@ export default function MarketplacePage() {
                 <p className="marketplace-asset-description">{asset.description}</p>
 
                 <div className="marketplace-seller-info">
-                  <span className="marketplace-seller-icon">👤</span>
+                  <span className="material-icons marketplace-seller-icon">person</span>
                   <span className="marketplace-seller-text">Seller: {asset.seller}</span>
                 </div>
 
@@ -240,11 +240,11 @@ export default function MarketplacePage() {
 
                 <div className="marketplace-asset-actions">
                   <Link to={`/asset/${asset.id}`} className="marketplace-view-btn">
-                    <span className="marketplace-btn-icon">👁</span>
+                    <span className="material-icons marketplace-btn-icon">view_quilt</span>
                     View Details
                   </Link>
                   <button className="marketplace-buy-btn">
-                    <span className="marketplace-btn-icon">🛒</span>
+                    <span className="material-icons marketplace-btn-icon">shopping_cart</span>
                     Buy Now
                   </button>
                 </div>

@@ -76,21 +76,21 @@ export default function Navbar() {
               to="/marketplace" 
               className={`navbar-nav-link ${isActivePage('/marketplace') ? 'active' : ''}`}
             >
-              <span className="navbar-link-icon">🛒</span>
+              <span className="material-icons navbar-link-icon">shopping_cart</span>
               Marketplace
             </Link>
             <Link 
-              to="/analytics" 
-              className={`navbar-nav-link ${isActivePage('/analytics') ? 'active' : ''}`}
+              to="/about" 
+              className={`navbar-nav-link ${isActivePage('/about') ? 'active' : ''}`}
             >
-              <span className="navbar-link-icon">📊</span>
-              Analytics
+              <span className="material-icons navbar-link-icon">bar_chart</span>
+              About
             </Link>
             <Link 
-              to="/learn" 
-              className={`navbar-nav-link ${isActivePage('/learn') ? 'active' : ''}`}
+              to="/learn-openassetx" 
+              className={`navbar-nav-link ${isActivePage('/learn-openassetx') ? 'active' : ''}`}
             >
-              <span className="navbar-link-icon">📚</span>
+              <span className="material-icons navbar-link-icon">local_library</span>
               Learn
             </Link>
           </div>
@@ -98,7 +98,7 @@ export default function Navbar() {
           {/* Search Bar */}
           <div className="navbar-search-container">
             <div className="navbar-search-wrapper">
-              <span className="navbar-search-icon">🔍</span>
+              <span className="material-icons navbar-search-icon">search</span>
               <input
                 type="text"
                 placeholder="Search assets..."
@@ -114,7 +114,7 @@ export default function Navbar() {
             <>
               {/* Wallet Balance */}
               <div className="navbar-wallet-balance">
-                <span className="navbar-balance-icon">💰</span>
+                <span className="material-icons navbar-balance-icon">token</span>
                 <span className="navbar-balance-amount">{user.balance}</span>
               </div>
 
@@ -124,7 +124,7 @@ export default function Navbar() {
                   className="navbar-notification-btn"
                   onClick={() => setNotificationsOpen(!notificationsOpen)}
                 >
-                  <span className="navbar-notification-icon">🔔</span>
+                  <span className="material-icons navbar-notification-icon">notifications</span>
                   {user.notifications > 0 && (
                     <span className="navbar-notification-badge">{user.notifications}</span>
                   )}
@@ -192,33 +192,33 @@ export default function Navbar() {
                     </div>
                     <div className="navbar-profile-links">
                       <Link to="/dashboard" className="navbar-profile-link">
-                        <span className="navbar-profile-link-icon">📊</span>
+                        <span className="material-icons navbar-profile-link-icon">dashboard</span>
                         Dashboard
                       </Link>
                       <Link to="/profile" className="navbar-profile-link">
-                        <span className="navbar-profile-link-icon">👤</span>
+                        <span className="material-icons navbar-profile-link-icon">account_circle</span>
                         Profile Settings
                       </Link>
                       <Link to="/add-new-asset" className="navbar-profile-link">
-                        <span className="navbar-profile-link-icon">➕</span>
+                        <span className="material-icons navbar-profile-link-icon">inventory_2</span>
                         List New Asset
                       </Link>
                       <Link to="/transactions" className="navbar-profile-link">
-                        <span className="navbar-profile-link-icon">📋</span>
+                        <span className="material-icons navbar-profile-link-icon">receipt</span>
                         Transaction History
                       </Link>
                       <Link to="/wallet" className="navbar-profile-link">
-                        <span className="navbar-profile-link-icon">💳</span>
+                        <span className="material-icons navbar-profile-link-icon">wallet</span>
                         Wallet Settings
                       </Link>
                     </div>
                     <div className="navbar-profile-actions">
                       <button className="navbar-wallet-connect-btn" onClick={handleWalletConnect}>
-                        <span className="navbar-btn-icon">🔗</span>
+                        <span className="material-icons navbar-btn-icon">contactless</span>
                         Connect Different Wallet
                       </button>
                       <button className="navbar-logout-btn" onClick={handleLogout}>
-                        <span className="navbar-btn-icon">🚪</span>
+                        <span className="material-icons navbar-btn-icon">logout</span>
                         Logout
                       </button>
                     </div>
@@ -265,15 +265,15 @@ export default function Navbar() {
               Marketplace
             </Link>
             <Link 
-              to="/analytics" 
+              to="/about" 
               className="navbar-mobile-link"
               onClick={() => setMobileMenuOpen(false)}
             >
               <span className="navbar-link-icon">📊</span>
-              Analytics
+              About
             </Link>
             <Link 
-              to="/learn" 
+              to="/learn-openassetx" 
               className="navbar-mobile-link"
               onClick={() => setMobileMenuOpen(false)}
             >

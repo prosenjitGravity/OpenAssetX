@@ -122,11 +122,11 @@ export default function AssetDetailPage({ assetId }) {
               className={`asset-details-wishlist-btn ${isLiked ? 'liked' : ''}`}
               onClick={handleAddToWishlist}
             >
-              <span className="asset-details-btn-icon">{isLiked ? '❤️' : '🤍'}</span>
+              <span className=" material-icons asset-details-btn-icon">{isLiked ? 'star_rate' : 'star_outline'}</span>
               {isLiked ? 'Saved' : 'Save'}
             </button>
             <button className="asset-details-share-btn">
-              <span className="asset-details-btn-icon">📤</span>
+              <span className="material-icons asset-details-btn-icon">share</span>
               Share
             </button>
           </div>
@@ -183,15 +183,15 @@ export default function AssetDetailPage({ assetId }) {
 
               <div className="asset-details-meta-info">
                 <div className="asset-details-meta-item">
-                  <span className="asset-details-meta-icon">🏷️</span>
+                  <span className="asset-details-meta-icon">local_offer</span>
                   <span>Model: {asset.model}</span>
                 </div>
                 <div className="asset-details-meta-item">
-                  <span className="asset-details-meta-icon">📅</span>
+                  <span className="material-icons asset-details-meta-icon">calendar_month</span>
                   <span>Listed on {asset.listedDate}</span>
                 </div>
                 <div className="asset-details-meta-item">
-                  <span className="asset-details-meta-icon">📍</span>
+                  <span className="material-icons asset-details-meta-icon">location_pin</span>
                   <span>{asset.location}</span>
                 </div>
               </div>
@@ -229,22 +229,22 @@ export default function AssetDetailPage({ assetId }) {
 
               <div className="asset-details-action-buttons">
                 <button onClick={handlePurchase} className="asset-details-buy-button">
-                  <span className="asset-details-btn-icon">🛒</span>
+                  <span className="material-icons asset-details-btn-icon">shopping_cart</span>
                   Buy Now for {asset.price} tokens
                 </button>
-                <button onClick={handleContactSeller} className="asset-details-contact-button">
+                {/* <button onClick={handleContactSeller} className="asset-details-contact-button">
                   <span className="asset-details-btn-icon">💬</span>
                   Contact Seller
-                </button>
+                </button> */}
               </div>
 
               <div className="asset-details-security-info">
                 <div className="asset-details-security-item">
-                  <span className="asset-details-security-icon">🔒</span>
+                  <span className=" material-icons asset-details-security-icon">security</span>
                   <span>Secure blockchain transaction</span>
                 </div>
                 <div className="asset-details-security-item">
-                  <span className="asset-details-security-icon">✅</span>
+                  <span className="material-icons asset-details-security-icon">verified</span>
                   <span>Verified asset authenticity</span>
                 </div>
               </div>
@@ -254,7 +254,7 @@ export default function AssetDetailPage({ assetId }) {
             <div className="asset-details-seller-card">
               <div className="asset-details-card-header">
                 <h3 className="asset-details-card-title">
-                  <span className="asset-details-title-icon">👤</span>
+                  <span className="material-icons asset-details-title-icon">person</span>
                   Seller Information
                 </h3>
               </div>
@@ -269,7 +269,7 @@ export default function AssetDetailPage({ assetId }) {
                     <div className="asset-details-seller-name-row">
                       <span className="asset-details-seller-name">{asset.sellerName}</span>
                       <div className="asset-details-seller-rating">
-                        <span className="asset-details-rating-stars">⭐</span>
+                        <span className="material-icons asset-details-rating-stars">star</span>
                         <span className="asset-details-rating-value">{asset.sellerRating}</span>
                         <span className="asset-details-rating-count">({asset.sellerTransactions} transactions)</span>
                       </div>
@@ -312,7 +312,7 @@ export default function AssetDetailPage({ assetId }) {
           <div className="asset-details-physical-card">
             <div className="asset-details-card-header">
               <h3 className="asset-details-card-title">
-                <span className="asset-details-title-icon">📐</span>
+                <span className="material-icons asset-details-title-icon">info</span>
                 Physical Details
               </h3>
             </div>
@@ -378,7 +378,7 @@ export default function AssetDetailPage({ assetId }) {
             {asset.reasonForSelling && (
               <div className="asset-details-info-card">
                 <h4 className="asset-details-info-title">
-                  <span className="asset-details-info-icon">💭</span>
+                  <span className="material-icons asset-details-info-icon">chat</span>
                   Reason for Selling
                 </h4>
                 <p className="asset-details-info-text">{asset.reasonForSelling}</p>

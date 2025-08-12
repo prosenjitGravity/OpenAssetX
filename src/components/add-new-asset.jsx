@@ -1,6 +1,8 @@
 import { useState } from "react"
 import "./add-new-asset.css"
 import Navbar from './navbar';
+import { Link } from "react-router-dom";
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 export default function ListAssetPage() {
   const [formData, setFormData] = useState({
@@ -185,10 +187,10 @@ export default function ListAssetPage() {
       <div className="add-new-asset-main-content">
         {/* Back Button */}
         <div className="add-new-asset-back-button-container">
-          <a href="/dashboard" className="add-new-asset-back-link">
-            <span className="add-new-asset-back-icon">←</span>
+          <Link href="/dashboard" className="add-new-asset-back-link">
+            <span className="material-icons add-new-asset-back-icon">arrow_back</span>
             Back to Dashboard
-          </a>
+          </Link>
         </div>
 
         {/* Header with Progress */}
@@ -230,7 +232,7 @@ export default function ListAssetPage() {
             <div className="add-new-asset-form-section">
               <div className="add-new-asset-section-header">
                 <h3 className="add-new-asset-section-title">
-                  <span className="add-new-asset-section-icon">📝</span>
+                  <span className="material-icons add-new-asset-section-icon">info_outline</span>
                   Basic Information
                 </h3>
                 <span className="add-new-asset-required-badge">Required Fields</span>
@@ -328,7 +330,7 @@ export default function ListAssetPage() {
             <div className="add-new-asset-form-section">
               <div className="add-new-asset-section-header">
                 <h3 className="add-new-asset-section-title">
-                  <span className="add-new-asset-section-icon">🔍</span>
+                  <span className="material-icons add-new-asset-section-icon">category</span>
                   Classification & Physical Details
                 </h3>
               </div>
@@ -484,7 +486,7 @@ export default function ListAssetPage() {
             <div className="add-new-asset-form-section">
               <div className="add-new-asset-section-header">
                 <h3 className="add-new-asset-section-title">
-                  <span className="add-new-asset-section-icon">💰</span>
+                  <span className="material-icons add-new-asset-section-icon">local_offer	</span>
                   Pricing & Purchase History
                 </h3>
               </div>
@@ -578,7 +580,7 @@ export default function ListAssetPage() {
             <div className="add-new-asset-form-section">
               <div className="add-new-asset-section-header">
                 <h3 className="add-new-asset-section-title">
-                  <span className="add-new-asset-section-icon">⚙️</span>
+                  <span className="material-icons add-new-asset-section-icon">settings</span>
                   Technical Specifications
                 </h3>
               </div>
@@ -720,14 +722,14 @@ export default function ListAssetPage() {
             <div className="add-new-asset-form-section">
               <div className="add-new-asset-section-header">
                 <h3 className="add-new-asset-section-title">
-                  <span className="add-new-asset-section-icon">📷</span>
+                  <span className="material-icons add-new-asset-section-icon">image_search</span>
                   Photos & Media
                 </h3>
               </div>
               
               <div className="add-new-asset-upload-section">
                 <div className="add-new-asset-upload-area">
-                  <div className="add-new-asset-upload-icon">📷</div>
+                  <div className="material-icons add-new-asset-upload-icon">camera_alt</div>
                   <p className="add-new-asset-upload-title">Upload high-quality images</p>
                   <p className="add-new-asset-upload-subtitle">Add multiple photos from different angles. First image will be the main photo.</p>
                   <input
@@ -743,7 +745,7 @@ export default function ListAssetPage() {
                     className="add-new-asset-upload-btn"
                     onClick={() => document.getElementById("images")?.click()}
                   >
-                    <span className="add-new-asset-btn-icon">📁</span>
+                    <span className="material-icons add-new-asset-btn-icon">source</span>
                     Choose Images
                   </button>
                   <p className="add-new-asset-upload-info">PNG, JPG up to 10MB each, maximum 10 images</p>
@@ -817,12 +819,13 @@ export default function ListAssetPage() {
             {/* Submit Buttons */}
             <div className="add-new-asset-submit-section">
               <button type="submit" className="add-new-asset-submit-btn">
-                <span className="add-new-asset-btn-icon">🚀</span>
+                <span className="material-icons add-new-asset-btn-icon">add</span>
                 Create Asset Token & List for Sale
               </button>
-              <a href="/dashboard" className="add-new-asset-cancel-btn">
+              <Link href="/dashboard" className="add-new-asset-cancel-btn">
+                <span className="material-icons add-new-asset-back-icon">cancel</span>
                 Cancel
-              </a>
+              </Link>
             </div>
           </form>
         </div>
