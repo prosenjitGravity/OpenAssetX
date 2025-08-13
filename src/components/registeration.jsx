@@ -315,7 +315,7 @@ const RegisterPage = () => {
                           value={formData.password}
                           onChange={(e) => handleInputChange('password', e.target.value)}
                         />
-                        <button
+                        <button  
                           type="button"
                           className="material-icons registration-password-toggle"
                           onClick={() => setShowPassword(!showPassword)}
