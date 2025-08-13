@@ -15,6 +15,8 @@ import EditAssetPage from './components/edit-asset-details';
 import TransactionHistoryPage from './components/transaction-history';
 import LearnPage from './components/learn-page';
 import AboutPage from './components/about'; 
+import HelpCenter from './components/help-desk';
+import ContactUs from './components/contact-us';
 
 
 function App() {
@@ -36,6 +38,8 @@ function App() {
           <Route path="/edit-asset-details" element={<EditAssetPage />} />
           <Route path="/transactions" element={<TransactionHistoryPage />} />
           <Route path="/learn-openassetx" element={<LearnPage />} />
+          <Route path="/help" element={<HelpCenter />} />
+          <Route path="/contact-us" element={<ContactUs />} />
         </Routes>
       </div>
     </BrowserRouter>
